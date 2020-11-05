@@ -1,5 +1,6 @@
 package com.kradwan.qa;
 
+import com.kradwan.qa.model.Printer;
 import com.kradwan.qa.model.webPrinter;
 
 import java.util.ArrayList;

@@ -1,18 +1,12 @@
 package com.kradwan.qa.model;
 
-public class webPrinter {
-    private String title;
-    private boolean enable = false;
-    private int numOfPapers = 1;
+public class webPrinter extends Printer {
 
     public webPrinter() {
     }
 
-
     public webPrinter(String title, boolean enable, int numOfPapers) {
-        this.title = title;
-        this.enable = enable;
-        this.numOfPapers = numOfPapers;
+        super(title, enable, numOfPapers);
     }
 
     public void printTitle(String title) {
@@ -25,6 +19,8 @@ public class webPrinter {
 
     }
 
+
+    @Override
     public void printKeyValue(String key, String value) {
 
 //        String output = String.format("10%s10%s", key, value);
@@ -33,6 +29,7 @@ public class webPrinter {
         System.out.println("PRINT KeyValue: " + output);
     }
 
+    @Override
     public void printImage(String url) {
 
         if (!(url.contains("http") || url.contains("https"))) {
@@ -41,10 +38,12 @@ public class webPrinter {
         System.out.println("PRINT IMAGE: " + url);
     }
 
+    @Override
     public void printEmptyLine() {
         System.out.println("\n");
     }
 
+    @Override
     public void printEmptyLine(int count) {
 
         if (count == 0) {
