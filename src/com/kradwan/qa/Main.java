@@ -1,19 +1,20 @@
 package com.kradwan.qa;
 
-import com.kradwan.qa.model.webPrinter;
+import com.kradwan.qa.model.Printer;
+import com.kradwan.qa.model.WebPrinter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    static List<Printer> printers;
+    static List<Printer> sPrinters;
 
     public static void main(String[] args) {
 
-        printers = new ArrayList<>();
-        printers.add(new webPrinter("WebPrinter1", true, 10));
-//        printers.add(new WifiPrinter("WifiPrinter", true, 10));
+        sPrinters = new ArrayList<>();
+        sPrinters.add(new WebPrinter("WebPrinter1", true, 10));
+//        sPrinters.add(new WifiPrinter("WifiPrinter", true, 10));
 
 //
 //        System.out.println("Welcome in Printers Panel:");
@@ -24,11 +25,12 @@ public class Main {
         printString("Hello From IUG");
         printString(null);
 
+
     }
 
     public static void printString(String title) {
 
-        for (Printer printer : printers) {
+        for (Printer printer : sPrinters) {
             printer.printTitle(title);
         }
     }
