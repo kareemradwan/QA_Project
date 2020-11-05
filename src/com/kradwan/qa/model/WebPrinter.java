@@ -10,7 +10,7 @@ public class WebPrinter extends Printer {
     @Override
     public void printTitle(String title) {
 
-        if (title.length() == 0) {
+        if (title == null || title.length() == 0) {
             return;
         }
 
@@ -21,6 +21,12 @@ public class WebPrinter extends Printer {
     @Override
     public void printKeyValue(String key, String value) {
 //        String output = String.format("10%s10%s", key, value);
+        if (key == null) {
+            key = "";
+        }
+        if (value == null) {
+            value = "";
+        }
         String output = key + " : " + value;
         System.out.println("PRINT KeyValue: " + output);
     }
@@ -28,7 +34,7 @@ public class WebPrinter extends Printer {
     @Override
     public void printImage(String url) {
 
-        if (!(url.contains("http") || url.contains("https"))) {
+        if (url == null || !(url.contains("http") || url.contains("https"))) {
             return;
         }
         System.out.println("PRINT IMAGE: " + url);
@@ -45,6 +51,6 @@ public class WebPrinter extends Printer {
         if (count == 0) {
             return;
         }
-        printEmptyLine(count--);
+        printEmptyLine(--count);
     }
 }
