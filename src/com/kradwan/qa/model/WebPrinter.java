@@ -10,9 +10,25 @@ public class WebPrinter extends Printer {
     @Override
     public void printTitle(String title) {
 
+
         if (title.length() == 0) {
             return;
         }
+
+
+        new Thread(() -> {
+            try {
+                long startTime = System.currentTimeMillis();
+
+                Thread.sleep(1000);
+                long endTime = System.currentTimeMillis();
+
+                System.out.println("THREAD: " + this.getTitle() + "  Total Time: " + (endTime - startTime));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
 
         System.out.println("PRINT TITLE: " + title);
 
