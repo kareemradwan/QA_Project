@@ -1,38 +1,47 @@
 package com.kradwan.qa.model;
 
-public class webPrinter {
-    private String title;
-    private boolean enable = false;
-    private int numOfPapers = 1;
+public class WebPrinter extends Printer {
 
-    public webPrinter() {
+
+    public WebPrinter(String title, boolean enable, int numOfPapers) {
+        super(title, enable, numOfPapers);
     }
 
-
-    public webPrinter(String title, boolean enable, int numOfPapers) {
-        this.title = title;
-        this.enable = enable;
-        this.numOfPapers = numOfPapers;
-    }
-
+    @Override
     public void printTitle(String title) {
+
 
         if (title.length() == 0) {
             return;
         }
 
+
+        new Thread(() -> {
+            try {
+                long startTime = System.currentTimeMillis();
+
+                Thread.sleep(1000);
+                long endTime = System.currentTimeMillis();
+
+                System.out.println("THREAD: " + this.getTitle() + "  Total Time: " + (endTime - startTime));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+
         System.out.println("PRINT TITLE: " + title);
 
     }
 
+    @Override
     public void printKeyValue(String key, String value) {
-
 //        String output = String.format("10%s10%s", key, value);
         String output = key + " : " + value;
-
         System.out.println("PRINT KeyValue: " + output);
     }
 
+    @Override
     public void printImage(String url) {
 
         if (!(url.contains("http") || url.contains("https"))) {
@@ -41,10 +50,12 @@ public class webPrinter {
         System.out.println("PRINT IMAGE: " + url);
     }
 
+    @Override
     public void printEmptyLine() {
         System.out.println("\n");
     }
 
+    @Override
     public void printEmptyLine(int count) {
 
         if (count == 0) {
